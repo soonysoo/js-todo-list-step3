@@ -1,5 +1,5 @@
-import Component from './core/Component.js';
-import { teamAPI } from './api/teamAPI.js';
+import Component from '../../core/Component.js';
+import { teamAPI } from '../../api/teamAPI.js';
 
 export default class Team extends Component {
     setup() {

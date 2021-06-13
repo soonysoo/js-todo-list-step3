@@ -1,4 +1,4 @@
-const BASEURL = 'https://js-todo-list-9ca3a.df.r.appspot.com/';
+const BASEURL = 'https://js-todo-list-9ca3a.df.r.appspot.com/api/teams/';
 
 export const storage = window.localStorage;
 /*body에 값 보내주는 API*/
@@ -37,39 +37,11 @@ const fetchAPI_DELETE = async function (url, method) {
     }
 };
 
-export const userAPI = {
-    addUser: (userName) => {
-        return fetchAPI_body('', 'POST', userName);
-    },
-    getAllUserItems: () => {
-        return fetchAPI_GET('', 'GET');
-    },
-    getUserItems: (userID) => {
-        return fetchAPI_GET(`${userID}/items/`, 'GET');
-    },
-    deleteUser: (userID) => {
-        console.log('deleteUser');
-        return fetchAPI_DELETE(userID, 'DELETE');
-    },
-};
-
 export const todoAPI = {
-    addTodo: (userid, item) => {
-        return fetchAPI_body(`${userid}/items`, 'POST', item);
+    getAllMember: (teamID) => {
+        return fetchAPI_GET(teamID, 'GET');
     },
-    deleteAllTodo: (userID) => {
-        return fetchAPI_DELETE(`${userID}/items`, 'DELETE');
-    },
-    deleteTodo: (userID, ItemID) => {
-        return fetchAPI_DELETE(`${userID}/items/${ItemID}`, 'DELETE');
-    },
-    updateItem: (userID, ItemID, updateItem) => {
-        return fetchAPI_body(`${userID}/items/${ItemID}`, 'PUT', updateItem);
-    },
-    updatePriorty: (userID, ItemID, priority) => {
-        return fetchAPI();
-    },
-    toggleItem: (userID, ItemID) => {
-        return fetchAPI_body(`${userID}/items/${ItemID}/toggle`, 'PUT');
+    addMembers: (teamId, name) => {
+        return fetchAPI_body(teamId + '/members', 'POST', { name: name });
     },
 };

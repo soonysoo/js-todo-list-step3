@@ -6,8 +6,6 @@ export default class Component {
         this.$target = $target;
         this.$props = $props; // $props 할당
         this.setup();
-        //this.render();
-        //this.setEvent();
     }
     setup() {}
     mounted() {}
@@ -16,7 +14,9 @@ export default class Component {
     }
     render() {
         this.$target.innerHTML = this.template();
+        this.template();
         this.setEvent();
+        this.mounted();
     }
     setEvent() {}
     setState(newState) {
